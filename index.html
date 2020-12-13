@@ -25,6 +25,34 @@
 		  background-color: teal;
 		  color: white;
 		}
+		#header {
+			background-color:#1e1e1e;
+			height:80px;
+		}
+		#nav {
+			background-color:#339999;
+			color:white;
+			width:30%;
+			height:300px;
+			float:left;
+		}
+		#section {
+			background-color:#2e2e2e;
+			width:70%;
+			text-align:left;
+			float:left;
+			padding:10px;
+		}
+		#footer {
+			background-color:#FFCC00;
+			height:100px;
+			clear:both;
+		}
+		#header, #nav, #section, #footer { text-align:center; }
+		#header, #footer { line-height:30px; }
+		#nav, #section { line-height:50px; }
+
+
 	html {
       height: 100%;
     }
@@ -60,22 +88,21 @@
     }
 	</style>
 	</head>
-  <body bgcolor="gray">
-	<a href="1.html"><img class="fit" src="Header image.png" width=200px align="left">
-	<br clear=right>
-	<div class="a" align="right">
-	<a>login</a>
-	<a>logout</a>
+  <body bgcolor="3d3d3d">
+	<div id="header">
+		<a href="index.html"><img src="Header image.png" height=80px align="left">
+			<div class="a" align="right">
+				<a>login</a>
+				<a>logout</a>
+			<hr style="border:solid 3px white">
+			</div>
+			<div class="b" align="right">
+				<a style="color:white">오늘의 예약 가능 인원 : 오전(1명) / 오후(2명) / 저녁(5명)</a>
+			</div>
+		</a>
 	</div>
-	</a>
-	</body>
-	<body bgcolor="white">
-    <hr style="border:solid 3px #85d2d4">
-	<div class="b" align="right">
-	<a>오늘의 예약 가능 인원 : 오전(1명) / 오후(2명) / 저녁(5명)</a>
-	<br>
-	<div style="background-color:gray">
-		<div id="calendar" style="width:70%;float:left;background-color:gray"></div>
+	<div id="section">
+		<div id="calendar" style="float:left;"></div>
 		<br clear=right>
 	</div>
 
@@ -110,45 +137,45 @@
             if (j == 0) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#FFB3BB;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             } else if (j == 6) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#FFB3BB;' class='calendar__day'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             } else {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#FFB3BB;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             }
           }
           else if ((i == 0 && j >= firstDayName) || (i > 0 && startDayCount <= lastDay)) {
             if (j == 0) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#BBFFC9;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
+                `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             } else if (j == 6) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#BBFFC9;'class='calendar__day verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
+                `<div style='background-color:white;'class='calendar__day verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             } else {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#BBFFC9;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
+                `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             }
           }
           else if (startDayCount > lastDay) {
             if (j == 0) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#B9E1FF;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             } else if (j == 6) {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#B9E1FF;' class='calendar__day verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             } else {
               // 스타일링을 위한 클래스 추가
               calHtml +=
-                `<div style='background-color:#B9E1FF;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
+                `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             }
           }
         }
