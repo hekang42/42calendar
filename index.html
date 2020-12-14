@@ -113,7 +113,6 @@
 	<script>
     const today = new Date();
     const setCalendarData = (year, month) => {
-      let calHtml = "";
       const setDate = new Date(year, month - 1, 1);
       const firstDay = setDate.getDate();
       const firstDayName = setDate.getDay();
@@ -127,7 +126,9 @@
         today.getMonth(),
         0
       ).getDate();
+	  const	Month = today.getMonth();
 
+      let calHtml = '<div style="line-height:30px;font-size:2.0em;color:white"><span>${(Month)}</span><span></span></div>';
       let startDayCount = 1;
       let lastDayCount = 1;
 
@@ -135,45 +136,40 @@
         for (let j = 0; j < 7; j++) {
           if (i == 0 && j < firstDayName) {
             if (j == 0) {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             } else if (j == 6) {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             } else {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter'><span>${(prevLastDay - (firstDayName - 1) + j)}</span><span></span></div>`;
             }
           }
           else if ((i == 0 && j >= firstDayName) || (i > 0 && startDayCount <= lastDay)) {
-            if (j == 0) {
-              // 스타일링을 위한 클래스 추가
+			  if (startDayCount == today.getDate()){
+              calHtml +=
+                `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span style="color:red">${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
+			  }
+			  else if (j == 0) {
               calHtml +=
                 `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             } else if (j == 6) {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:white;'class='calendar__day verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             } else {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             }
           }
           else if (startDayCount > lastDay) {
             if (j == 0) {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             } else if (j == 6) {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             } else {
-              // 스타일링을 위한 클래스 추가
               calHtml +=
                 `<div style='background-color:#dfdfdf;' class='calendar__day horizontalGutter verticalGutter'><span>${lastDayCount++}</span><span></span></div>`;
             }
