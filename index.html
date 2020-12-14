@@ -78,6 +78,18 @@
       border-radius: 5px;
       padding: 20px;
     }
+    .calendar__date {
+      display: inline-block;
+      vertical-align: bottom;
+      width: calc(97% / 7);
+      height: calc(10%);
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding: 1px;
+	  color: white;
+	  background-color: #2e2e2e;
+    }
+
 
     .horizontalGutter {
       margin-right: 0.5%;
@@ -126,11 +138,28 @@
         today.getMonth(),
         0
       ).getDate();
-	  const	Month = today.getMonth();
+	  var	nMonth = today.getMonth();
 
-      let calHtml = '<div style="line-height:30px;font-size:2.0em;color:white"><span>${(Month)}</span><span></span></div>';
+      let calHtml = `<div style="line-height:30px;font-size:2.0em;color:white"><span>${nMonth+1}</span><span></span></div>`;
       let startDayCount = 1;
       let lastDayCount = 1;
+
+		calHtml +=
+			`<div style="color:red" class='calendar__date horizontalGutter'><span>SUN</span><span></span></div>`;
+		calHtml +=
+            `<div class='calendar__date horizontalGutter'><span>MON</span><span></span></div>`;
+		calHtml +=
+            `<div class='calendar__date horizontalGutter'><span>TUE</span><span></span></div>`;
+		calHtml +=
+			`<div class='calendar__date horizontalGutter'><span>WED</span><span></span></div>`;
+		calHtml +=
+			`<div class='calendar__date horizontalGutter'><span>THU</span><span></span></div>`;
+		calHtml +=
+			`<div class='calendar__date horizontalGutter'><span>FRI</span><span></span></div>`;
+		calHtml +=
+            `<div style="color:blue" class='calendar__date'><span>SAT</span><span></span></div>`;
+
+
 
       for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
@@ -159,7 +188,7 @@
                 `<div style='background-color:white;'class='calendar__day verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             } else {
               calHtml +=
-                `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span>${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
+                `<div style='background-color:white;'class='calendar__day horizontalGutter verticalGutter'><span >${startDayCount}</span><span id='${year}${month}${setFixDayCount(startDayCount++)}'></span></div>`;
             }
           }
           else if (startDayCount > lastDay) {
